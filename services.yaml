@@ -1,0 +1,159 @@
+# Adaptix Founder OS - canonical service registry
+# The aggregator fetches https://api.adaptixcore.com/api/v1/{slug}/openapi.json
+# for every entry below. If a service is unreachable the aggregator marks it
+# "deferred" and falls back to the last-known-good spec (do NOT fake it).
+#
+# Keep this list as the single source of truth for what shows up on the docs
+# landing page. Add a service here, push, and the nightly aggregator picks it
+# up automatically.
+
+services:
+  - slug: core
+    name: Adaptix Core
+    repo: Adaptix-Core-Service
+    description: API gateway and platform spine; routes /api/v1/* to every downstream service.
+    domain: platform
+
+  - slug: billing
+    name: Billing
+    repo: Adaptix-Billing-Service
+    description: 837P generation, Office Ally clearinghouse submission, 999/277/835 reconciliation.
+    domain: revenue
+
+  - slug: epcr
+    name: ePCR
+    repo: Adaptix-EPCR-Service
+    description: NEMSIS 3.5 ePCR capture, validation, and export pipeline.
+    domain: clinical
+
+  - slug: fire
+    name: Fire
+    repo: Adaptix-Fire-Service
+    description: NERIS-compliant fire incident reporting and operations.
+    domain: clinical
+
+  - slug: cad
+    name: CAD
+    repo: Adaptix-CAD-Service
+    description: Computer-aided dispatch, unit status, and active incident board.
+    domain: operations
+
+  - slug: communications
+    name: Communications
+    repo: Adaptix-Communications-Service
+    description: SMS, voice (Telnyx), and outbound messaging orchestration.
+    domain: operations
+
+  - slug: telephony
+    name: Telephony
+    repo: Adaptix-Telephony-Service
+    description: Inbound call routing, voicemail, and AI phone help desk integration.
+    domain: operations
+
+  - slug: transport
+    name: Transport
+    repo: Adaptix-Transport-Service
+    description: Ground transport scheduling, mileage capture, and dispatch handoff.
+    domain: operations
+
+  - slug: air
+    name: Air
+    repo: Adaptix-Air-Service
+    description: Air medical operations, weather minima, and aircraft status.
+    domain: operations
+
+  - slug: workforce
+    name: Workforce
+    repo: Adaptix-Workforce-Service
+    description: Employees, roles, credentials, and identity rollups.
+    domain: people
+
+  - slug: labor
+    name: Labor
+    repo: Adaptix-Labor-Service
+    description: Timekeeping, payroll exports, and labor compliance.
+    domain: people
+
+  - slug: crew
+    name: Crew
+    repo: Adaptix-Crew-Service
+    description: Shift assembly, crew rotations, and on-shift state.
+    domain: people
+
+  - slug: inventory
+    name: Inventory
+    repo: Adaptix-Inventory-Service
+    description: Supplies, par levels, and consumption tracking.
+    domain: logistics
+
+  - slug: medications
+    name: Medications
+    repo: Adaptix-Medications-Service
+    description: Medication catalog, dosing, and administration audit trail.
+    domain: logistics
+
+  - slug: narcotics
+    name: Narcotics
+    repo: Adaptix-Narcotics-Service
+    description: DEA-aligned controlled substance chain-of-custody.
+    domain: logistics
+
+  - slug: crm
+    name: CRM
+    repo: Adaptix-CRM-Service
+    description: Agency, hospital, and partner relationship management.
+    domain: business
+
+  - slug: investor
+    name: Investor
+    repo: Adaptix-Investor-Service
+    description: Cap table, KPI rollups, and investor reporting.
+    domain: business
+
+  - slug: partner
+    name: Partner
+    repo: Adaptix-Partner-Service
+    description: Partner agency contracts, billing splits, and onboarding.
+    domain: business
+
+  - slug: finance
+    name: Finance
+    repo: Adaptix-Finance-Service
+    description: Ledger, AR, AP, and revenue rollups.
+    domain: revenue
+
+  - slug: calendar
+    name: Calendar
+    repo: Adaptix-Calendar-Service
+    description: Scheduling primitives shared across operations, people, and CRM.
+    domain: platform
+
+  - slug: search
+    name: Search
+    repo: Adaptix-Search-Service
+    description: Cross-service search, indexing, and Cortex retrieval backbone.
+    domain: platform
+
+  - slug: founder
+    name: Founder OS
+    repo: Adaptix-Founder-Service
+    description: Founder-only command surface; cross-domain KPIs and Cortex orchestration.
+    domain: founder
+
+  - slug: imports
+    name: Imports
+    repo: Adaptix-Imports-Service
+    description: Inbound data ingestion (CSV, HL7, NEMSIS, third-party feeds).
+    domain: platform
+
+  - slug: exports
+    name: Exports
+    repo: Adaptix-Exports-Service
+    description: Outbound data exports, scheduled reports, and state submission bundles.
+    domain: platform
+
+  - slug: integrations
+    name: Integrations
+    repo: Adaptix-Integrations-Service
+    description: Third-party connector registry (Stripe, Plaid, Office Ally, Dropbox Sign, etc).
+    domain: platform
