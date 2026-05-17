@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  active?: 'services' | 'cortex' | 'readme';
+}
+
+const { title, description, active } = Astro.props;
+const fullTitle = title === 'Adaptix Docs'
+  ? 'Adaptix Docs — Founder OS API Reference'
+  : `${title} · Adaptix Docs`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050608" />
+    <meta name="description" content={description || 'Adaptix Founder OS — aggregated API reference for every Adaptix service.'} />
+    <title>{fullTitle}</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="/" class="brand" aria-label="Adaptix Docs home">
+        <span class="orbit" aria-hidden="true"></span>
+        <span>Adaptix</span>
+        <span class="sep">·</span>
+        <span class="sub">Docs</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/" class={active === 'services' ? 'active' : ''}>Services</a>
+        <a href="/cortex" class={active === 'cortex' ? 'active' : ''}>Cortex</a>
+        <a href="/readme" class={active === 'readme' ? 'active' : ''}>Readme</a>
+      </nav>
+    </header>
+    <main class="shell">
+      <slot />
+    </main>
+    <footer class="foot">
+      <div>Adaptix Founder OS · API Reference</div>
+      <div>docs.adaptixcore.com</div>
+    </footer>
+  </body>
+</html>

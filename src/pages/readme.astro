@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Readme" active="readme">
+  <section class="hero">
+    <div class="eyebrow">Founder OS · Operating Manual</div>
+    <h1>How this docs site works.</h1>
+    <p class="lede">
+      Adaptix-Docs is a static Astro site that aggregates OpenAPI specs from every
+      Adaptix-* service in the polyrepo. It runs nightly in CI, pulls live specs
+      from <code>api.adaptixcore.com</code>, and renders them as a mission-control
+      reference. No mocks, no faked specs — if a service is down, this site says so.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Quick start</h2><div class="meta">local</div></div>
+    <pre class="code-block"><code>cd Adaptix-Docs
+npm install
+npm run aggregate    # pulls live OpenAPI from api.adaptixcore.com
+npm run dev          # http://localhost:4321</code></pre>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Add a service</h2><div class="meta">services.yaml</div></div>
+    <p style="color: var(--text-dim);">
+      Append a new entry to <code>services.yaml</code> with <code>slug</code>,
+      <code>name</code>, <code>repo</code>, <code>description</code>, and
+      <code>domain</code>. The aggregator and landing page pick it up automatically
+      on the next run.
+    </p>
+    <pre class="code-block"><code>services:
+  - slug: new-thing
+    name: New Thing
+    repo: Adaptix-New-Thing-Service
+    description: One-line, founder-readable.
+    domain: platform</code></pre>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>How aggregation works</h2><div class="meta">scripts/</div></div>
+    <p style="color: var(--text-dim); max-width: 760px;">
+      <code>scripts/aggregate-openapi.mjs</code> iterates every service in
+      <code>services.yaml</code> and fetches
+      <code>https://api.adaptixcore.com/api/v1/{`{slug}`}/openapi.json</code> with a
+      5-second timeout. On success the spec is written to
+      <code>public/api/{`{slug}`}.openapi.json</code> and the service is marked
+      <span class="mono">live</span>. On failure, the site falls back to the
+      last-known-good copy and marks the service <span class="mono">deferred</span>;
+      if no prior copy exists the service is <span class="mono">unavailable</span>.
+      An aggregated <code>public/api/index.json</code> drives the landing page badges.
+    </p>
+    <p style="color: var(--text-dim); max-width: 760px;">
+      <code>scripts/aggregate-cortex.mjs</code> does the same thing for
+      <code>/api/v1/{`{slug}`}/cortex/tools</code> — Adaptix Cortex's tool registry
+      surface. Services that haven't shipped the registry yet are marked
+      <span class="mono">not_exposed</span> (never faked).
+    </p>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>CI</h2><div class="meta">.github/workflows</div></div>
+    <p style="color: var(--text-dim); max-width: 760px;">
+      <code>.github/workflows/aggregate-openapi.yml</code> runs nightly at 09:00 UTC
+      (and on every push to <code>main</code>), runs both aggregators, commits the
+      refreshed cache to <code>main</code>, and uploads a built site artifact ready
+      for the S3 + CloudFront deploy on <code>docs.adaptixcore.com</code> (Adaptix-Infra
+      Terraform follow-up — not in this repo).
+    </p>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Naming rules</h2><div class="meta">contract</div></div>
+    <ul style="color: var(--text-dim); line-height: 1.8;">
+      <li><strong>Adaptix Cortex</strong> on every AI surface. Never "AI", "Copilot", "Bedrock", or "Assistant".</li>
+      <li><strong>Founder OS</strong> for the cross-domain command center.</li>
+      <li><strong>docs.adaptixcore.com</strong> is the canonical home.</li>
+    </ul>
+  </section>
+</Base>

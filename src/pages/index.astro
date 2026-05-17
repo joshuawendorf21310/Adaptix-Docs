@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import { loadAggregated } from '../lib/services';
+
+const idx = loadAggregated();
+// Group services by domain for the landing page.
+const byDomain: Record<string, typeof idx.services> = {};
+for (const svc of idx.services) {
+  (byDomain[svc.domain] ||= []).push(svc);
+}
+const domainOrder = ['platform', 'revenue', 'clinical', 'operations', 'people', 'logistics', 'business', 'founder'];
+const orderedDomains = [
+  ...domainOrder.filter((d) => byDomain[d]),
+  ...Object.keys(byDomain).filter((d) => !domainOrder.includes(d)),
+];
+
+const generatedAtPretty = idx.generatedAt && idx.generatedAt !== new Date(0).toISOString()
+  ? new Date(idx.generatedAt).toUTCString()
+  : 'not yet aggregated';
+---
+<Base title="Adaptix Docs" active="services">
+  <section class="hero">
+    <div class="eyebrow">Founder OS · API Reference</div>
+    <h1>Every Adaptix service, one mission-control console.</h1>
+    <p class="lede">
+      Live OpenAPI for every microservice in the polyrepo, aggregated nightly from the
+      production gateway. Use this as the source of truth for Adaptix Cortex tool-calls,
+      integration work, and new-agency onboarding.
+    </p>
+    <div class="stat-strip">
+      <div class="stat">
+        <div class="label">Services</div>
+        <div class="value numeral">{idx.totals.services}</div>
+      </div>
+      <div class="stat">
+        <div class="label">Live</div>
+        <div class="value numeral live">{idx.totals.live}</div>
+      </div>
+      <div class="stat">
+        <div class="label">Deferred</div>
+        <div class="value numeral deferred">{idx.totals.deferred}</div>
+      </div>
+      <div class="stat">
+        <div class="label">Unavailable</div>
+        <div class="value numeral unavailable">{idx.totals.unavailable}</div>
+      </div>
+    </div>
+  </section>
+
+  {orderedDomains.map((domain) => (
+    <section>
+      <div class="section-head">
+        <h2>{domain}</h2>
+        <div class="meta">{byDomain[domain].length} services</div>
+      </div>
+      <div class="svc-grid">
+        {byDomain[domain].map((svc) => (
+          <a class="svc-card" href={`/services/${svc.slug}`}>
+            <div class="head">
+              <span class="slug">{svc.slug}</span>
+              <span class={`badge ${svc.status}`}>
+                <span class="dot" aria-hidden="true"></span>
+                {svc.status}
+              </span>
+            </div>
+            <div class="name">{svc.name}</div>
+            <div class="desc">{svc.description}</div>
+            <div class="foot">
+              <span class="domain">{svc.domain}</span>
+              <span class="numeral">HTTP {svc.httpStatus || '—'}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <section style="margin-top: 48px;">
+    <div class="notice">
+      Aggregator run: <span class="mono">{generatedAtPretty}</span> · gateway
+      <span class="mono">{idx.gateway}</span>. Specs marked
+      <span class="mono">deferred</span> are last-known-good — the live service did not
+      respond within 5s on the last sync. Specs marked
+      <span class="mono">unavailable</span> have never returned a valid OpenAPI document.
+    </div>
+  </section>
+</Base>

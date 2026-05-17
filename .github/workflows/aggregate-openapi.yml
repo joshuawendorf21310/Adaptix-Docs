@@ -1,0 +1,69 @@
+name: aggregate-openapi
+
+# Pull every Adaptix-* service's OpenAPI + Cortex tool registry from the live
+# production gateway, commit the refreshed cache to main, and build the site.
+# Real fetches only — never mocks. Services that are down are recorded as
+# "deferred" with their last-known-good spec preserved on disk.
+
+on:
+  schedule:
+    # 09:00 UTC nightly = 02:00 PT / 05:00 ET. Cheap and out of the way.
+    - cron: '0 9 * * *'
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aggregate-openapi
+  cancel-in-progress: false
+
+jobs:
+  aggregate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Aggregate OpenAPI specs
+        run: node scripts/aggregate-openapi.mjs
+        env:
+          ADAPTIX_GATEWAY_BASE: https://api.adaptixcore.com
+
+      - name: Aggregate Cortex tool registry
+        run: node scripts/aggregate-cortex.mjs
+        env:
+          ADAPTIX_GATEWAY_BASE: https://api.adaptixcore.com
+
+      - name: Commit refreshed cache
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          if [ -n "$(git status --porcelain public/api)" ]; then
+            git config user.name  "adaptix-docs-bot"
+            git config user.email "adaptix-docs-bot@users.noreply.github.com"
+            git add public/api
+            git commit -m "chore(docs): nightly OpenAPI + Cortex aggregation"
+            git push origin HEAD:main
+          else
+            echo "No spec changes."
+          fi
+
+      - name: Build site
+        run: npm run build
+
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: adaptix-docs-site
+          path: dist/
+          retention-days: 14

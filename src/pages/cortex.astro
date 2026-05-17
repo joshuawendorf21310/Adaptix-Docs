@@ -1,0 +1,114 @@
+---
+import Base from '../layouts/Base.astro';
+import { loadCortexIndex, loadCortexToolsForService } from '../lib/cortex';
+
+const idx = loadCortexIndex();
+const generatedAtPretty = idx.generatedAt && idx.generatedAt !== new Date(0).toISOString()
+  ? new Date(idx.generatedAt).toUTCString()
+  : 'not yet aggregated';
+---
+<Base title="Adaptix Cortex · Tool Registry" active="cortex">
+  <section class="hero">
+    <div class="eyebrow">Founder OS · Agentic Surface</div>
+    <h1>Adaptix Cortex tool registry.</h1>
+    <p class="lede">
+      Every Adaptix service exposes a tool registry at
+      <code>/api/v1/{`{service}`}/cortex/tools</code>. Cortex — the founder's personal
+      AI co-pilot across billing, dispatch, clinical, and command — calls those tools
+      to take action on the platform. This page is the canonical index.
+    </p>
+    <div class="stat-strip">
+      <div class="stat">
+        <div class="label">Services scanned</div>
+        <div class="value numeral">{idx.totals.services}</div>
+      </div>
+      <div class="stat">
+        <div class="label">Registry exposed</div>
+        <div class="value numeral live">{idx.totals.exposed}</div>
+      </div>
+      <div class="stat">
+        <div class="label">Total tools</div>
+        <div class="value numeral">{idx.totals.tools}</div>
+      </div>
+      <div class="stat">
+        <div class="label">Last sync</div>
+        <div class="value numeral" style="font-size: 0.95rem;">{generatedAtPretty}</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top: 28px;">
+    <div class="notice">
+      Cortex naming policy: this is <span class="mono">Adaptix Cortex</span>,
+      always. Never "AI", "Copilot", "Bedrock", or "Assistant" on user-facing
+      surfaces. Bedrock is the substrate; Cortex is the product.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Calling Cortex tools</h2>
+      <div class="meta">canonical pattern</div>
+    </div>
+    <p style="color: var(--text-dim); max-width: 760px;">
+      Cortex tools are POST endpoints under each service's <code>/cortex/</code> namespace.
+      Every tool documents its JSON-Schema input + output. Example:
+    </p>
+    <pre class="code-block"><code>POST https://api.adaptixcore.com/api/v1/billing/cortex/tools/invoke
+Authorization: Bearer &lt;founder-token&gt;
+Content-Type: application/json
+
+{`{
+  "tool": "submit_claim",
+  "input": {
+    "claim_id": "01JABCD...",
+    "payer_id": "MEDICARE_CA"
+  }
+}`}</code></pre>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Registry by service</h2>
+      <div class="meta">{idx.services.length} services</div>
+    </div>
+    {idx.services.map((svc) => {
+      const tools = loadCortexToolsForService(svc.slug) as any;
+      const toolList = Array.isArray(tools?.tools) ? tools.tools : [];
+      const statusClass =
+        svc.status === 'exposed' ? 'live'
+        : svc.status === 'not_exposed' ? 'deferred'
+        : 'unavailable';
+      return (
+        <div class="endpoint" style="padding: 4px 0;">
+          <div class="row" style="flex-wrap: wrap; gap: 14px;">
+            <span class={`badge ${statusClass}`}>
+              <span class="dot" aria-hidden="true"></span>
+              {svc.status.replace('_', ' ')}
+            </span>
+            <span class="path"><strong>{svc.name}</strong> <span style="color: var(--text-faint);">/api/v1/{svc.slug}/cortex/tools</span></span>
+            <span class="summary numeral">{svc.toolCount} tools · HTTP {svc.httpStatus || '—'}</span>
+          </div>
+          {toolList.length > 0 && (
+            <div style="padding: 4px 14px 14px;">
+              {toolList.map((t: any) => (
+                <div class="row" style="padding: 6px 0; border-top: 1px solid var(--border);">
+                  <span class="method post">tool</span>
+                  <span class="path">{t.name || t.id || '—'}</span>
+                  <span class="summary">{t.description || t.summary || ''}</span>
+                </div>
+              ))}
+            </div>
+          )}
+          {svc.status !== 'exposed' && (
+            <div style="padding: 0 14px 14px; color: var(--text-faint); font-size: 0.85rem;">
+              {svc.status === 'not_exposed' && <>Service has not yet exposed <code>/cortex/tools</code>.</>}
+              {svc.status === 'upstream_error' && <>Upstream returned HTTP {svc.httpStatus} on last sync.</>}
+              {svc.status === 'network_error' && <>Network error: <code>{svc.error}</code>.</>}
+            </div>
+          )}
+        </div>
+      );
+    })}
+  </section>
+</Base>
