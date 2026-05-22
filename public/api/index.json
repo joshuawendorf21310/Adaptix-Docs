@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-21T10:20:09.445Z",
+  "generatedAt": "2026-05-22T10:09:37.799Z",
   "gateway": "https://api.adaptixcore.com",
   "totals": {
     "services": 25,
@@ -16,11 +16,11 @@
       "domain": "platform",
       "url": "https://api.adaptixcore.com/api/v1/core/openapi.json",
       "httpStatus": 401,
-      "elapsedMs": 367,
+      "elapsedMs": 231,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.027Z"
+      "fetchedAt": "2026-05-22T10:09:37.650Z"
     },
     {
       "slug": "billing",
@@ -30,11 +30,11 @@
       "domain": "revenue",
       "url": "https://api.adaptixcore.com/api/v1/billing/openapi.json",
       "httpStatus": 401,
-      "elapsedMs": 58,
+      "elapsedMs": 5,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.087Z"
+      "fetchedAt": "2026-05-22T10:09:37.656Z"
     },
     {
       "slug": "epcr",
@@ -44,11 +44,11 @@
       "domain": "clinical",
       "url": "https://api.adaptixcore.com/api/v1/epcr/openapi.json",
       "httpStatus": 404,
-      "elapsedMs": 60,
+      "elapsedMs": 7,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.148Z"
+      "fetchedAt": "2026-05-22T10:09:37.664Z"
     },
     {
       "slug": "fire",
@@ -58,11 +58,11 @@
       "domain": "clinical",
       "url": "https://api.adaptixcore.com/api/v1/fire/openapi.json",
       "httpStatus": 404,
-      "elapsedMs": 59,
+      "elapsedMs": 6,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.208Z"
+      "fetchedAt": "2026-05-22T10:09:37.670Z"
     },
     {
       "slug": "cad",
@@ -72,11 +72,11 @@
       "domain": "operations",
       "url": "https://api.adaptixcore.com/api/v1/cad/openapi.json",
       "httpStatus": 404,
-      "elapsedMs": 60,
+      "elapsedMs": 9,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.269Z"
+      "fetchedAt": "2026-05-22T10:09:37.679Z"
     },
     {
       "slug": "communications",
@@ -86,11 +86,11 @@
       "domain": "operations",
       "url": "https://api.adaptixcore.com/api/v1/communications/openapi.json",
       "httpStatus": 404,
-      "elapsedMs": 59,
+      "elapsedMs": 5,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.328Z"
+      "fetchedAt": "2026-05-22T10:09:37.686Z"
     },
     {
       "slug": "telephony",
@@ -100,11 +100,11 @@
       "domain": "operations",
       "url": "https://api.adaptixcore.com/api/v1/telephony/openapi.json",
       "httpStatus": 401,
-      "elapsedMs": 58,
+      "elapsedMs": 4,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.387Z"
+      "fetchedAt": "2026-05-22T10:09:37.691Z"
     },
     {
       "slug": "transport",
@@ -114,11 +114,11 @@
       "domain": "operations",
       "url": "https://api.adaptixcore.com/api/v1/transport/openapi.json",
       "httpStatus": 401,
-      "elapsedMs": 58,
+      "elapsedMs": 5,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.446Z"
+      "fetchedAt": "2026-05-22T10:09:37.697Z"
     },
     {
       "slug": "air",
@@ -128,11 +128,11 @@
       "domain": "operations",
       "url": "https://api.adaptixcore.com/api/v1/air/openapi.json",
       "httpStatus": 401,
-      "elapsedMs": 60,
+      "elapsedMs": 5,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.507Z"
+      "fetchedAt": "2026-05-22T10:09:37.703Z"
     },
     {
       "slug": "workforce",
@@ -141,12 +141,12 @@
       "description": "Employees, roles, credentials, and identity rollups.",
       "domain": "people",
       "url": "https://api.adaptixcore.com/api/v1/workforce/openapi.json",
-      "httpStatus": 401,
-      "elapsedMs": 58,
+      "httpStatus": 404,
+      "elapsedMs": 5,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.566Z"
+      "fetchedAt": "2026-05-22T10:09:37.709Z"
     },
     {
       "slug": "labor",
@@ -156,11 +156,11 @@
       "domain": "people",
       "url": "https://api.adaptixcore.com/api/v1/labor/openapi.json",
       "httpStatus": 401,
-      "elapsedMs": 58,
+      "elapsedMs": 5,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.625Z"
+      "fetchedAt": "2026-05-22T10:09:37.715Z"
     },
     {
       "slug": "crew",
@@ -170,11 +170,11 @@
       "domain": "people",
       "url": "https://api.adaptixcore.com/api/v1/crew/openapi.json",
       "httpStatus": 401,
-      "elapsedMs": 58,
+      "elapsedMs": 5,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.683Z"
+      "fetchedAt": "2026-05-22T10:09:37.720Z"
     },
     {
       "slug": "inventory",
@@ -184,11 +184,11 @@
       "domain": "logistics",
       "url": "https://api.adaptixcore.com/api/v1/inventory/openapi.json",
       "httpStatus": 404,
-      "elapsedMs": 58,
+      "elapsedMs": 6,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.743Z"
+      "fetchedAt": "2026-05-22T10:09:37.727Z"
     },
     {
       "slug": "medications",
@@ -198,11 +198,11 @@
       "domain": "logistics",
       "url": "https://api.adaptixcore.com/api/v1/medications/openapi.json",
       "httpStatus": 401,
-      "elapsedMs": 59,
+      "elapsedMs": 16,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.803Z"
+      "fetchedAt": "2026-05-22T10:09:37.744Z"
     },
     {
       "slug": "narcotics",
@@ -212,11 +212,11 @@
       "domain": "logistics",
       "url": "https://api.adaptixcore.com/api/v1/narcotics/openapi.json",
       "httpStatus": 404,
-      "elapsedMs": 58,
+      "elapsedMs": 6,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.862Z"
+      "fetchedAt": "2026-05-22T10:09:37.750Z"
     },
     {
       "slug": "crm",
@@ -225,12 +225,12 @@
       "description": "Agency, hospital, and partner relationship management.",
       "domain": "business",
       "url": "https://api.adaptixcore.com/api/v1/crm/openapi.json",
-      "httpStatus": 503,
-      "elapsedMs": 56,
+      "httpStatus": 404,
+      "elapsedMs": 5,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.919Z"
+      "fetchedAt": "2026-05-22T10:09:37.755Z"
     },
     {
       "slug": "investor",
@@ -240,11 +240,11 @@
       "domain": "business",
       "url": "https://api.adaptixcore.com/api/v1/investor/openapi.json",
       "httpStatus": 401,
-      "elapsedMs": 58,
+      "elapsedMs": 5,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:08.977Z"
+      "fetchedAt": "2026-05-22T10:09:37.760Z"
     },
     {
       "slug": "partner",
@@ -254,11 +254,11 @@
       "domain": "business",
       "url": "https://api.adaptixcore.com/api/v1/partner/openapi.json",
       "httpStatus": 401,
-      "elapsedMs": 58,
+      "elapsedMs": 4,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:09.035Z"
+      "fetchedAt": "2026-05-22T10:09:37.765Z"
     },
     {
       "slug": "finance",
@@ -268,11 +268,11 @@
       "domain": "revenue",
       "url": "https://api.adaptixcore.com/api/v1/finance/openapi.json",
       "httpStatus": 404,
-      "elapsedMs": 59,
+      "elapsedMs": 5,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:09.094Z"
+      "fetchedAt": "2026-05-22T10:09:37.770Z"
     },
     {
       "slug": "calendar",
@@ -282,11 +282,11 @@
       "domain": "platform",
       "url": "https://api.adaptixcore.com/api/v1/calendar/openapi.json",
       "httpStatus": 404,
-      "elapsedMs": 58,
+      "elapsedMs": 5,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:09.152Z"
+      "fetchedAt": "2026-05-22T10:09:37.775Z"
     },
     {
       "slug": "search",
@@ -296,11 +296,11 @@
       "domain": "platform",
       "url": "https://api.adaptixcore.com/api/v1/search/openapi.json",
       "httpStatus": 404,
-      "elapsedMs": 58,
+      "elapsedMs": 5,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:09.210Z"
+      "fetchedAt": "2026-05-22T10:09:37.780Z"
     },
     {
       "slug": "founder",
@@ -310,11 +310,11 @@
       "domain": "founder",
       "url": "https://api.adaptixcore.com/api/v1/founder/openapi.json",
       "httpStatus": 404,
-      "elapsedMs": 58,
+      "elapsedMs": 5,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:09.270Z"
+      "fetchedAt": "2026-05-22T10:09:37.785Z"
     },
     {
       "slug": "imports",
@@ -324,11 +324,11 @@
       "domain": "platform",
       "url": "https://api.adaptixcore.com/api/v1/imports/openapi.json",
       "httpStatus": 401,
-      "elapsedMs": 57,
+      "elapsedMs": 4,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:09.328Z"
+      "fetchedAt": "2026-05-22T10:09:37.790Z"
     },
     {
       "slug": "exports",
@@ -338,11 +338,11 @@
       "domain": "platform",
       "url": "https://api.adaptixcore.com/api/v1/exports/openapi.json",
       "httpStatus": 401,
-      "elapsedMs": 58,
+      "elapsedMs": 4,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:09.386Z"
+      "fetchedAt": "2026-05-22T10:09:37.795Z"
     },
     {
       "slug": "integrations",
@@ -352,11 +352,11 @@
       "domain": "platform",
       "url": "https://api.adaptixcore.com/api/v1/integrations/openapi.json",
       "httpStatus": 401,
-      "elapsedMs": 58,
+      "elapsedMs": 4,
       "error": null,
       "status": "unavailable",
       "usedLastKnownGood": false,
-      "fetchedAt": "2026-05-21T10:20:09.445Z"
+      "fetchedAt": "2026-05-22T10:09:37.799Z"
     }
   ]
 }
