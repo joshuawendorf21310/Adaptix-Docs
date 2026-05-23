@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-22T10:09:38.118Z",
+  "generatedAt": "2026-05-23T09:38:34.311Z",
   "gateway": "https://api.adaptixcore.com",
   "totals": {
     "services": 25,
@@ -15,10 +15,10 @@
       "url": "https://api.adaptixcore.com/api/v1/core/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 401,
-      "elapsedMs": 107,
+      "elapsedMs": 111,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:37.963Z"
+      "fetchedAt": "2026-05-23T09:38:34.115Z"
     },
     {
       "slug": "billing",
@@ -28,10 +28,10 @@
       "url": "https://api.adaptixcore.com/api/v1/billing/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 401,
-      "elapsedMs": 25,
+      "elapsedMs": 30,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:37.989Z"
+      "fetchedAt": "2026-05-23T09:38:34.147Z"
     },
     {
       "slug": "epcr",
@@ -44,7 +44,7 @@
       "elapsedMs": 8,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:37.998Z"
+      "fetchedAt": "2026-05-23T09:38:34.155Z"
     },
     {
       "slug": "fire",
@@ -57,7 +57,7 @@
       "elapsedMs": 6,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.004Z"
+      "fetchedAt": "2026-05-23T09:38:34.162Z"
     },
     {
       "slug": "cad",
@@ -67,10 +67,10 @@
       "url": "https://api.adaptixcore.com/api/v1/cad/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 404,
-      "elapsedMs": 7,
+      "elapsedMs": 9,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.012Z"
+      "fetchedAt": "2026-05-23T09:38:34.171Z"
     },
     {
       "slug": "communications",
@@ -80,10 +80,10 @@
       "url": "https://api.adaptixcore.com/api/v1/communications/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 401,
-      "elapsedMs": 7,
+      "elapsedMs": 8,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.019Z"
+      "fetchedAt": "2026-05-23T09:38:34.179Z"
     },
     {
       "slug": "telephony",
@@ -93,10 +93,10 @@
       "url": "https://api.adaptixcore.com/api/v1/telephony/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 401,
-      "elapsedMs": 5,
+      "elapsedMs": 6,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.024Z"
+      "fetchedAt": "2026-05-23T09:38:34.186Z"
     },
     {
       "slug": "transport",
@@ -106,10 +106,10 @@
       "url": "https://api.adaptixcore.com/api/v1/transport/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 401,
-      "elapsedMs": 5,
+      "elapsedMs": 9,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.029Z"
+      "fetchedAt": "2026-05-23T09:38:34.196Z"
     },
     {
       "slug": "air",
@@ -119,10 +119,10 @@
       "url": "https://api.adaptixcore.com/api/v1/air/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 401,
-      "elapsedMs": 4,
+      "elapsedMs": 6,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.034Z"
+      "fetchedAt": "2026-05-23T09:38:34.202Z"
     },
     {
       "slug": "workforce",
@@ -132,10 +132,10 @@
       "url": "https://api.adaptixcore.com/api/v1/workforce/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 404,
-      "elapsedMs": 7,
+      "elapsedMs": 5,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.041Z"
+      "fetchedAt": "2026-05-23T09:38:34.209Z"
     },
     {
       "slug": "labor",
@@ -145,10 +145,10 @@
       "url": "https://api.adaptixcore.com/api/v1/labor/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 401,
-      "elapsedMs": 4,
+      "elapsedMs": 7,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.046Z"
+      "fetchedAt": "2026-05-23T09:38:34.216Z"
     },
     {
       "slug": "crew",
@@ -158,10 +158,10 @@
       "url": "https://api.adaptixcore.com/api/v1/crew/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 401,
-      "elapsedMs": 4,
+      "elapsedMs": 11,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.051Z"
+      "fetchedAt": "2026-05-23T09:38:34.227Z"
     },
     {
       "slug": "inventory",
@@ -171,10 +171,10 @@
       "url": "https://api.adaptixcore.com/api/v1/inventory/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 404,
-      "elapsedMs": 4,
+      "elapsedMs": 7,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.056Z"
+      "fetchedAt": "2026-05-23T09:38:34.235Z"
     },
     {
       "slug": "medications",
@@ -184,10 +184,10 @@
       "url": "https://api.adaptixcore.com/api/v1/medications/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 404,
-      "elapsedMs": 7,
+      "elapsedMs": 11,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.064Z"
+      "fetchedAt": "2026-05-23T09:38:34.247Z"
     },
     {
       "slug": "narcotics",
@@ -197,10 +197,10 @@
       "url": "https://api.adaptixcore.com/api/v1/narcotics/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 404,
-      "elapsedMs": 5,
+      "elapsedMs": 7,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.069Z"
+      "fetchedAt": "2026-05-23T09:38:34.254Z"
     },
     {
       "slug": "crm",
@@ -210,10 +210,10 @@
       "url": "https://api.adaptixcore.com/api/v1/crm/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 404,
-      "elapsedMs": 5,
+      "elapsedMs": 11,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.075Z"
+      "fetchedAt": "2026-05-23T09:38:34.265Z"
     },
     {
       "slug": "investor",
@@ -223,10 +223,10 @@
       "url": "https://api.adaptixcore.com/api/v1/investor/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 401,
-      "elapsedMs": 4,
+      "elapsedMs": 6,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.079Z"
+      "fetchedAt": "2026-05-23T09:38:34.271Z"
     },
     {
       "slug": "partner",
@@ -236,10 +236,10 @@
       "url": "https://api.adaptixcore.com/api/v1/partner/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 401,
-      "elapsedMs": 4,
+      "elapsedMs": 5,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.083Z"
+      "fetchedAt": "2026-05-23T09:38:34.276Z"
     },
     {
       "slug": "finance",
@@ -247,12 +247,12 @@
       "description": "Ledger, AR, AP, and revenue rollups.",
       "domain": "revenue",
       "url": "https://api.adaptixcore.com/api/v1/finance/cortex/tools",
-      "status": "not_exposed",
-      "httpStatus": 401,
-      "elapsedMs": 7,
+      "status": "upstream_error",
+      "httpStatus": 503,
+      "elapsedMs": 4,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.090Z"
+      "fetchedAt": "2026-05-23T09:38:34.280Z"
     },
     {
       "slug": "calendar",
@@ -260,12 +260,12 @@
       "description": "Scheduling primitives shared across operations, people, and CRM.",
       "domain": "platform",
       "url": "https://api.adaptixcore.com/api/v1/calendar/cortex/tools",
-      "status": "not_exposed",
-      "httpStatus": 404,
-      "elapsedMs": 5,
+      "status": "upstream_error",
+      "httpStatus": 503,
+      "elapsedMs": 4,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.095Z"
+      "fetchedAt": "2026-05-23T09:38:34.284Z"
     },
     {
       "slug": "search",
@@ -273,12 +273,12 @@
       "description": "Cross-service search, indexing, and Cortex retrieval backbone.",
       "domain": "platform",
       "url": "https://api.adaptixcore.com/api/v1/search/cortex/tools",
-      "status": "not_exposed",
-      "httpStatus": 404,
-      "elapsedMs": 4,
+      "status": "upstream_error",
+      "httpStatus": 503,
+      "elapsedMs": 5,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.099Z"
+      "fetchedAt": "2026-05-23T09:38:34.289Z"
     },
     {
       "slug": "founder",
@@ -286,12 +286,12 @@
       "description": "Founder-only command surface; cross-domain KPIs and Cortex orchestration.",
       "domain": "founder",
       "url": "https://api.adaptixcore.com/api/v1/founder/cortex/tools",
-      "status": "not_exposed",
-      "httpStatus": 404,
-      "elapsedMs": 6,
+      "status": "upstream_error",
+      "httpStatus": 503,
+      "elapsedMs": 4,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.105Z"
+      "fetchedAt": "2026-05-23T09:38:34.293Z"
     },
     {
       "slug": "imports",
@@ -301,10 +301,10 @@
       "url": "https://api.adaptixcore.com/api/v1/imports/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 401,
-      "elapsedMs": 4,
+      "elapsedMs": 6,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.109Z"
+      "fetchedAt": "2026-05-23T09:38:34.300Z"
     },
     {
       "slug": "exports",
@@ -317,7 +317,7 @@
       "elapsedMs": 4,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.114Z"
+      "fetchedAt": "2026-05-23T09:38:34.305Z"
     },
     {
       "slug": "integrations",
@@ -327,10 +327,10 @@
       "url": "https://api.adaptixcore.com/api/v1/integrations/cortex/tools",
       "status": "not_exposed",
       "httpStatus": 401,
-      "elapsedMs": 3,
+      "elapsedMs": 6,
       "error": null,
       "toolCount": 0,
-      "fetchedAt": "2026-05-22T10:09:38.118Z"
+      "fetchedAt": "2026-05-23T09:38:34.311Z"
     }
   ]
 }
