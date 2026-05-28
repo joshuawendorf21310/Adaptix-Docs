@@ -6,9 +6,7 @@ name: aggregate-openapi
 # "deferred" with their last-known-good spec preserved on disk.
 
 on:
-  schedule:
-    # 09:00 UTC nightly = 02:00 PT / 05:00 ET. Cheap and out of the way.
-    - cron: '0 9 * * *'
+  # schedule: DISABLED 2026-05-26 — founder cost-containment directive. Re-enable only with explicit founder approval.
   push:
     branches: [main]
   workflow_dispatch: {}
@@ -17,18 +15,18 @@ permissions:
   contents: write
 
 concurrency:
-  group: aggregate-openapi
-  cancel-in-progress: false
+  group: aggregate-openapi-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   aggregate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '20'
 
@@ -62,8 +60,8 @@ jobs:
         run: npm run build
 
       - name: Upload site artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: adaptix-docs-site
           path: dist/
-          retention-days: 14
+          retention-days: 3

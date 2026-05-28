@@ -1,0 +1,8 @@
+# Adaptix-Docs CODEOWNERS
+# Default owner for all paths
+* @joshuawendorf21310
+
+# Governance + security files
+/.github/                @joshuawendorf21310
+/SECURITY.md             @joshuawendorf21310
+/LICENSE                 @joshuawendorf21310
