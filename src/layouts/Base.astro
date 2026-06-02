@@ -20,6 +20,7 @@ const fullTitle = title === 'Adaptix Docs'
     <meta name="theme-color" content="#050608" />
     <meta name="description" content={description || 'Adaptix Founder OS — aggregated API reference for every Adaptix service.'} />
     <title>{fullTitle}</title>
+    <slot name="head" />
   </head>
   <body>
     <header class="topbar">
