@@ -2,12 +2,15 @@
 // All file reads happen at build time inside Astro pages.
 
 import { readFileSync, existsSync } from 'node:fs';
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
 import yaml from 'js-yaml';
 
-const __filename = fileURLToPath(import.meta.url);
-const ROOT = join(dirname(__filename), '..', '..');
+// During Astro SSG builds the prerender bundle runs from within dist/.prerender/chunks/
+// so __dirname-relative paths break.  process.cwd() returns the project root
+// both in dev mode and in Astro's static build (Astro runs the Node process from
+// the project root).  This is the canonical Astro pattern for accessing source
+// assets from build-time utilities.
+const ROOT = process.cwd();
 
 export interface ServiceManifestEntry {
   slug: string;
