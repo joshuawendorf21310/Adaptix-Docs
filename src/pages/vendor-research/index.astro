@@ -1,0 +1,93 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { VENDOR_RESEARCH, VENDOR_RESEARCH_BY_SLUG } from '../../lib/vendor-research';
+
+// Pull collection entries so we get word-count / body-length metrics directly
+// from the markdown on disk. If any expected file is missing the index page
+// will still render the static metadata, but the row will show "missing".
+const entries = await getCollection('vendor-research');
+const entriesBySlug = new Map(entries.map((e) => [e.id.replace(/\.md$/, ''), e]));
+
+const rows = VENDOR_RESEARCH.map((meta) => {
+  const entry = entriesBySlug.get(meta.slug);
+  const bodyLen = entry?.body?.length || 0;
+  // Rough word count from raw markdown body.
+  const wordCount = entry?.body ? entry.body.split(/\s+/).filter(Boolean).length : 0;
+  return { meta, entry, bodyLen, wordCount };
+});
+
+const totalWords = rows.reduce((sum, r) => sum + r.wordCount, 0);
+---
+<Base
+  title="Vendor Research"
+  description="Internal vendor research — Adaptix kill strategy intelligence (not for public distribution)."
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+  </Fragment>
+  <section class="hero">
+    <div class="eyebrow">Founder OS · Internal Intelligence</div>
+    <h1>Vendor Research</h1>
+    <p class="lede">
+      Sourced kill-strategy briefs on every vendor Adaptix displaces. Each brief is the
+      analyst dossier behind the public <span class="mono">/vs/&lt;vendor&gt;</span>
+      comparison pages on adaptixcore.com.
+    </p>
+    <div class="notice">
+      <strong>Internal only.</strong> These documents are robots-noindexed and must not
+      be linked from public marketing surfaces. Public comparison copy is derived from
+      these dossiers but is approved separately before it ships.
+    </div>
+    <div class="stat-strip">
+      <div class="stat">
+        <div class="label">Briefs</div>
+        <div class="value numeral">{rows.length}</div>
+      </div>
+      <div class="stat">
+        <div class="label">Vendors Mapped</div>
+        <div class="value numeral">{VENDOR_RESEARCH.reduce((s, m) => s + m.vendors.length, 0)}</div>
+      </div>
+      <div class="stat">
+        <div class="label">Total Words</div>
+        <div class="value numeral">{totalWords.toLocaleString()}</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Cluster Briefs</h2>
+      <div class="meta">{rows.length} on disk</div>
+    </div>
+    <div class="svc-grid">
+      {rows.map(({ meta, entry, wordCount }) => (
+        <a class="svc-card" href={`/vendor-research/${meta.slug}`}>
+          <div class="head">
+            <span class="slug">{meta.slug}</span>
+            <span class={`badge ${entry ? 'live' : 'unavailable'}`}>
+              <span class="dot" aria-hidden="true"></span>
+              {entry ? 'on disk' : 'missing'}
+            </span>
+          </div>
+          <div class="name">{meta.title}</div>
+          <div class="desc">{meta.summary}</div>
+          <div class="foot">
+            <span class="domain">{meta.cluster}</span>
+            <span class="numeral">
+              {wordCount.toLocaleString()} words · {meta.vendors.length} vendors
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section style="margin-top: 48px;">
+    <div class="notice">
+      Source of truth: <span class="mono">Adaptix-Docs/vendor-research/*.md</span>.
+      Updates land via direct commits to main; the Marketing site
+      (<span class="mono">/vs/*</span> pages) pulls summary excerpts from these files at build time.
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,127 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { VENDOR_RESEARCH_BY_SLUG } from '../../lib/vendor-research';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('vendor-research');
+  return entries.map((entry) => {
+    const slug = entry.id.replace(/\.md$/, '');
+    return {
+      params: { slug },
+      props: { entry, slug },
+    };
+  });
+}
+
+const { entry, slug } = Astro.props as {
+  entry: Awaited<ReturnType<typeof getCollection<'vendor-research'>>>[number];
+  slug: string;
+};
+
+const meta = VENDOR_RESEARCH_BY_SLUG[slug];
+const title = meta?.title || slug;
+const cluster = meta?.cluster || '—';
+const summary = meta?.summary || '';
+const vendors = meta?.vendors || [];
+
+const { Content } = await render(entry);
+const wordCount = entry.body ? entry.body.split(/\s+/).filter(Boolean).length : 0;
+---
+<Base title={title} description={summary}>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+  </Fragment>
+  <section class="detail-head">
+    <div class="crumbs">
+      <a href="/vendor-research">Vendor Research</a> &nbsp;/&nbsp; <span>{slug}</span>
+    </div>
+    <h1>{title}</h1>
+    {summary && <p style="color: var(--text-dim); max-width: 720px; margin-top: 4px;">{summary}</p>}
+    <div class="meta-row">
+      <span class="badge live">
+        <span class="dot" aria-hidden="true"></span>
+        internal · noindex
+      </span>
+      <span>cluster: {cluster}</span>
+      <span>{vendors.length} vendors</span>
+      <span>{wordCount.toLocaleString()} words</span>
+      <span><a href="/vendor-research">all briefs</a></span>
+    </div>
+    {vendors.length > 0 && (
+      <div class="meta-row" style="margin-top: 10px; flex-wrap: wrap;">
+        {vendors.map((v) => <span class="mono" style="opacity: 0.8;">· {v}</span>)}
+      </div>
+    )}
+  </section>
+
+  <section style="margin-top: 28px;">
+    <div class="notice">
+      <strong>Internal research dossier.</strong> Sourced facts only; CONFIRMED / INFERRED / UNKNOWN
+      tagging applies throughout. Do not paste into public marketing without founder sign-off.
+    </div>
+  </section>
+
+  <article class="vendor-research-prose">
+    <Content />
+  </article>
+
+  <style is:global>
+    .vendor-research-prose {
+      max-width: 820px;
+      margin: 32px 0 64px;
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 15.5px;
+    }
+    .vendor-research-prose h1,
+    .vendor-research-prose h2,
+    .vendor-research-prose h3,
+    .vendor-research-prose h4 {
+      color: var(--text);
+      letter-spacing: -0.01em;
+      margin-top: 1.6em;
+      margin-bottom: 0.4em;
+    }
+    .vendor-research-prose h1 { font-size: 26px; }
+    .vendor-research-prose h2 { font-size: 21px; border-bottom: 1px solid var(--border, #1a1b1f); padding-bottom: 6px; }
+    .vendor-research-prose h3 { font-size: 17px; color: var(--accent, #ff7a1a); }
+    .vendor-research-prose h4 { font-size: 15px; color: var(--text-dim); }
+    .vendor-research-prose p,
+    .vendor-research-prose ul,
+    .vendor-research-prose ol {
+      margin: 0.7em 0;
+    }
+    .vendor-research-prose ul,
+    .vendor-research-prose ol {
+      padding-left: 1.4em;
+    }
+    .vendor-research-prose li { margin: 0.25em 0; }
+    .vendor-research-prose code {
+      background: rgba(255, 122, 26, 0.08);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 13.5px;
+    }
+    .vendor-research-prose pre {
+      background: #0b0c10;
+      border: 1px solid var(--border, #1a1b1f);
+      padding: 14px 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    .vendor-research-prose strong { color: var(--text); }
+    .vendor-research-prose a { color: var(--accent, #ff7a1a); }
+    .vendor-research-prose hr {
+      border: 0;
+      border-top: 1px solid var(--border, #1a1b1f);
+      margin: 2em 0;
+    }
+    .vendor-research-prose blockquote {
+      border-left: 3px solid var(--accent, #ff7a1a);
+      padding: 4px 0 4px 14px;
+      color: var(--text-dim);
+      margin: 1em 0;
+    }
+  </style>
+</Base>
