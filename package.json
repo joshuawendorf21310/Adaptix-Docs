@@ -13,7 +13,7 @@
     "aggregate": "node scripts/aggregate-openapi.mjs"
   },
   "dependencies": {
-    "astro": "^6.4.2",
-    "js-yaml": "^4.1.0"
+    "astro": "^6.3.7",
+    "js-yaml": "^4.2.0"
   }
 }
