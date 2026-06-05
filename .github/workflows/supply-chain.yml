@@ -18,27 +18,27 @@ permissions:
 
 jobs:
   secret-scan:
-    uses: joshuawendorf21310/Adaptix-Core-Service/.github/workflows/_secret-scan.yml@main
+    uses: FusionEMS-Quantum-LLC/Adaptix-Core-Service/.github/workflows/_secret-scan.yml@main
 
   sast:
-    uses: joshuawendorf21310/Adaptix-Core-Service/.github/workflows/_sast-typescript.yml@main
+    uses: FusionEMS-Quantum-LLC/Adaptix-Core-Service/.github/workflows/_sast-typescript.yml@main
     with:
       languages: javascript-typescript
 
   deps:
-    uses: joshuawendorf21310/Adaptix-Core-Service/.github/workflows/_dependency-audit-node.yml@main
+    uses: FusionEMS-Quantum-LLC/Adaptix-Core-Service/.github/workflows/_dependency-audit-node.yml@main
     with:
       working_directory: "."
       audit_level: high
 
   sbom:
-    uses: joshuawendorf21310/Adaptix-Core-Service/.github/workflows/_sbom.yml@main
+    uses: FusionEMS-Quantum-LLC/Adaptix-Core-Service/.github/workflows/_sbom.yml@main
     with:
       mode: directory
       target_path: "."
 
   license:
-    uses: joshuawendorf21310/Adaptix-Core-Service/.github/workflows/_license-scan.yml@main
+    uses: FusionEMS-Quantum-LLC/Adaptix-Core-Service/.github/workflows/_license-scan.yml@main
     with:
       stack: node
       working_directory: "."
