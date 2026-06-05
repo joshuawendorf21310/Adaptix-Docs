@@ -11,8 +11,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "aggregate": "node scripts/aggregate-openapi.mjs",
-    "test": "node -e \"console.log('adaptix-docs has no runtime tests — docs site builds via astro build')\"",
-    "lint": "node -e \"console.log('adaptix-docs lint covered by astro build TypeScript check')\""
+    "test": "echo 'adaptix-docs has no runtime tests - docs site builds via astro build'",
+    "lint": "echo 'adaptix-docs lint covered by astro build TypeScript check'"
   },
   "dependencies": {
     "astro": "^6.3.7",
