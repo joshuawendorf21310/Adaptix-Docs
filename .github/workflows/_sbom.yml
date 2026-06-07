@@ -1,9 +1,9 @@
-name: governance-sbom
+﻿name: governance-sbom
 # Self-contained SBOM generation + upload.
 # Syft v1.44.0 pinned via install script (NOT anchore/sbom-action which floats @v0/@main).
 # Produces CycloneDX JSON + SPDX JSON.
-# sbom-generate  — BLOCKING   (fails if Syft errors or SBOM is empty/invalid JSON)
-# sbom-upload    — NON-BLOCKING (continue-on-error: true; outages must not block merges)
+# sbom-generate  â€” BLOCKING   (fails if Syft errors or SBOM is empty/invalid JSON)
+# sbom-upload    â€” NON-BLOCKING (continue-on-error: true; outages must not block merges)
 # Governance artifact retained 90 days.
 
 on:
@@ -20,14 +20,14 @@ env:
   SYFT_VERSION: "1.44.0"
 
 jobs:
-  # ────────────────────────────────────────────────────────────────────────────
+  # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   # BLOCKING: fail PR if Syft errors or produces invalid/empty SBOM
-  # ────────────────────────────────────────────────────────────────────────────
+  # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   sbom-generate:
     name: sbom-generate
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: install Syft (pinned CLI v1.44.0)
         run: |
@@ -62,10 +62,10 @@ jobs:
           if-no-files-found: error
           retention-days: 1
 
-  # ────────────────────────────────────────────────────────────────────────────
+  # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   # NON-BLOCKING: GitHub artifact/dependency submission outages must not block merges.
   # Governance evidence retained 90 days per policy.
-  # ────────────────────────────────────────────────────────────────────────────
+  # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   sbom-upload:
     name: sbom-upload
     runs-on: ubuntu-latest
