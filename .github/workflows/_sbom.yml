@@ -2,8 +2,8 @@
 # Self-contained SBOM generation + upload.
 # Syft v1.44.0 pinned via install script (NOT anchore/sbom-action which floats @v0/@main).
 # Produces CycloneDX JSON + SPDX JSON.
-# sbom-generate  â€" BLOCKING   (fails if Syft errors or SBOM is empty/invalid JSON)
-# sbom-upload    â€" NON-BLOCKING (continue-on-error: true; outages must not block merges)
+# sbom-generate  -" BLOCKING   (fails if Syft errors or SBOM is empty/invalid JSON)
+# sbom-upload    -" NON-BLOCKING (continue-on-error: true; outages must not block merges)
 # Governance artifact retained 90 days.
 
 on:
