@@ -7,8 +7,6 @@
 
 on:
   # schedule: DISABLED 2026-05-26 -" founder cost-containment directive. Re-enable only with explicit founder approval.
-  push:
-    branches: [main]
   workflow_dispatch: {}
 
 permissions:
