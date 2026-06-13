@@ -135,13 +135,21 @@ run_node() {
   if npm run | grep -qE "^\s*lint\b"; then
     run_check lint npm run lint
   fi
+  if npm run | grep -qE "^\s*build\b"; then
+    run_check build npm run build
+  fi
   if npm run | grep -qE "^\s*format:check\b|^\s*prettier"; then
     run_check format npm run format:check 2>/dev/null || npm run prettier -- --check
   fi
   if npm run | grep -qE "^\s*typecheck\b|^\s*tsc\b"; then
     run_check typecheck npm run typecheck
   elif command -v npx >/dev/null 2>&1 && [[ -f "tsconfig.json" ]]; then
-    run_check typecheck npx --no -- tsc --noEmit
+    if [[ -f "node_modules/.bin/tsc" ]]; then
+      run_check typecheck node_modules/.bin/tsc --noEmit
+    else
+      echo "[CHECK typecheck] SKIPPED (typescript not installed locally)"
+      SKIPPED_CHECKS+=("typecheck")
+    fi
   fi
   if npm run | grep -qE "^\s*test\b"; then
     if [[ "${ADAPTIX_CI_FAST:-}" == "1" ]]; then
